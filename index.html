@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--[if IE 8]>    <html class="lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<title>Divbox</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<link rel="stylesheet" href="demo.css" type="text/css" media="screen" charset="utf-8">
+	
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script src="divbox.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#trigger").on("click", function(){
+				$("#content").divBox(".the_divbox");
+				
+				// just to change button label
+				if($(this).text() == "Show divbox"){
+					$(this).text("Hide divbox");
+				}else{
+					$(this).text("Show divbox");
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="twelve columns">
+				<div class="panel">
+					<h1 class="title">Divbox</h1>
+				</div>
+			</div>
+		</div>
+		<div id="content" class="content eight columns">
+			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>
+			<p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p>
+			<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</p>
+			<p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
+			<p>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</p>
+			<p>Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</p>
+			
+			<div class="the_divbox" style="display:none;">
+				<img src="http://placehold.it/100x100" alt="100x100" style="float:left;margin-top:-.3em;margin-right:1em;" />
+				<h1>Hello world</h1>
+				<p>Sed adipiscing ornare risus. Morbi est est, blandit sit amet, sagittis vel, euismod vel, velit. Pellentesque egestas sem. Suspendisse commodo ullamcorper magna.</p>
+			</div>			
+		</div>
+		<div class="sidebar four columns">
+			<a id="trigger" href="#" class="myButton">Show divbox</a>
+		</div>
+	</div>
+</body>
+</html>
+
