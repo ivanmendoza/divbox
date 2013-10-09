@@ -1,7 +1,7 @@
 (function($){
 	$.fn.divBox = function(content, closeButton, callbacks){
 		var $this = this;
-		var closeButton = closeButton || '.close-box';
+		var closeButton = closeButton || '.close-divbox';
 		var $divboxTarget = $this;
 		if(content){
 			$content = $(content, $this);
@@ -22,12 +22,6 @@
 			var $divbox = 			$("<div>").attr("class", "divbox").css({'position':'absolute', 'background':divboxColor, 'top':'0', 'bottom':'0', 'left':'0', 'right':'0', 'z-index':'1002'}).fadeTo(0, .9);
 				$divboxContent = 	$("<div>").attr("class", "divboxContent").css({'position':'absolute', 'top':'30px', 'bottom':'30px', 'left':'30px', 'right':'30px', 'z-index':'1003'});
 			
-			$(closeButton).each(function(){
-				$(this).on("click", function(){
-					deleteDivbox($divboxContainer.parent());
-				});
-			});
-			
 			if($content){
 				$content.show();
 				$divboxContent.append($content);
@@ -36,6 +30,12 @@
 			$target.append($divboxContainer);
 			$divboxContainer.fadeIn(500);
 			
+			$(closeButton, target).each(function(){
+				$(this).on("click", function(){
+					$dc = $(this).parents("div.divboxContainer");
+					deleteDivbox($dc.parent());
+				});
+			});
 			
 			return $divboxContent;
 		};
