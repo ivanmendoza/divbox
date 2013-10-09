@@ -1,0 +1,330 @@
+/*!
+DEMOS
+	By Iván E. Mendoza (@dic7)
+*/
+
+// GLOBAL CONFIG
+	@images_path: 			"../images";
+	@defaulPageMargin:		1em;
+	@import 				"snbx_config.less";
+
+// DEFAULT COLORS
+	@light:					#fff;
+	@mid:					#ccc;
+	@dark:					#000;
+
+	@soft_light:			#eee;
+	@soft_dark:				#333;
+	@gray:					#888;
+	@light_gray:			#ccc;
+	@dark_gray:				#555;
+
+
+body{
+	background: @light;
+	color:@dark;
+	margin:0;
+	padding:@defaulPageMargin;
+}
+.container{
+	background: @light;
+	margin:0 auto; // centered.
+	overflow:hidden;
+}
+
+h3{
+	margin-bottom:.25em;
+}
+.labelGroup{
+	text-transform:uppercase; 
+	color:#777; 
+	margin:2em 0 1em .5em; 
+	font-size:.85em;
+}
+
+a{
+	color:#0091c6;
+	&:hover{
+		color:#00bbff;
+	}
+	&:visited{
+		color:#005f81;
+	}
+}
+
+.theGrid{
+	border:solid 1px #ddd;
+	#borders .rounded(.25em);
+	.row{
+		margin-bottom:.5em;
+		.column, .columns{
+			min-height:2em;
+		}
+	}
+}
+
+nav.main{
+	display: block;
+	clear:both;
+	overflow: hidden;
+	ul{
+		list-style: none;
+		padding:0;
+		margin:0 .5em;
+		li{
+			margin: 0 1em 0 0;
+			padding: 0;
+			display:block;
+			float:left;
+			a{
+				display:block;
+				text-transform: lowercase;
+				padding:.1em .4em .2em;
+				text-decoration:none;
+				color:#777;
+				border:solid 1px transparent;
+				#borders .rounded(.2em);
+				#transition .all(300ms);
+				&:hover, &:focus{
+					color:#07a;
+					border:solid 1px #ddd;
+					background:#efefef;
+				}
+			}
+			&.back{
+				float:left;
+				a:before{
+					content: "« ";
+					color:#07a;
+				}
+			}
+			&.next{
+				float:right;
+				text-align: right;
+				margin:0 0 0 1em;
+				a:after{
+					content: " »";
+					color:#07a;
+				}
+			}
+		}
+	}
+}
+
+.panel{
+	#borders .rounded(.4em);
+	#shadows .drop(1px, 0, 10px, .05);
+	#gradients .vertical(@light_gray, lighten(@light_gray, 18%), @light);
+	border:solid 1px lighten(@light_gray, 10%);
+	margin:1em;
+	padding:1em 1em 2em;
+	overflow:hidden;
+	h1{
+		text-transform: uppercase;
+	}
+	h1, h2, h3, h4{
+		margin:.1em 0 .5em;
+		&:first-child{
+			margin-top:.2em;
+			line-height:1;
+		}
+	}
+	h3.tagline{
+		font-size:1.2em;
+		margin:.2em 0 .8em;
+		text-transform: inherit;
+	}
+	h3, h4{
+		&.areaTitle, &.code{
+			font-size:.85em;
+			color:@gray;
+			text-transform: uppercase;
+			border-bottom:solid 1px @light_gray;
+		}
+	}
+	&.header{
+		margin: 2em 1em 1.5em;
+		.title{
+			font-size:2em;
+			margin:.4em 0 0;
+			line-height:1;
+		}
+		.tagline{
+			font-size:1.2em;
+			margin:.2em 0 0;
+			text-transform: inherit;
+		}
+	}
+}
+
+pre{
+	margin:1em .5em;
+	#fontsx .code(1em);
+	overflow:hidden;
+	#borders .rounded(.4em);
+	#shadows .inner(1px, 1px, 2px, .3);
+	padding:.8em;
+	display:block;
+	background: @light;
+	color:@dark_gray;
+	
+    -moz-tab-size: 4;
+    tab-size: 4;
+	&:hover, &:active{
+		overflow:visible;
+	}
+}
+span.comment{
+	color:#777;
+}
+span.string{
+	color:green;
+	em{
+		color:red;
+	}
+}
+span.attribute{
+	color:blue;
+}
+
+.grid.menu{
+	font-size:1.25em;
+	padding:1.5em 1em 1em;
+	.column, .columns{
+		margin-bottom: .5em;
+	}
+	a{
+		display: block;
+		padding:10% 3% 2%;
+		background:#1293ca;
+		#borders .rounded(.15em);
+		text-decoration: none;
+		text-transform: uppercase;
+		color:@soft_light;
+		#transition .all(300ms);
+		&:hover, &:focus{
+			color:@light;
+			background:#00bfff;
+		}
+	}
+	@media screen and (min-width: 481px) and (max-width: 1024px) {
+		font-size: 1em;
+		a{
+			padding:8% 2% 2%;
+		}
+	}
+	@media screen and (max-width: 480px) {
+		font-size: .9em;
+	}
+}
+
+// BASIC
+	.myButton{
+		#uix .button();
+	}
+	.myRedButton{
+		#uix .button(red, white, #a00, 15%); // background, text, border, "contrast" for gradient over background color
+	}
+	.myRedCustomButton{
+		#uix .button(red, white, #a00, 15%);
+		&:hover{
+			#gradients .v(#fa0);
+			color:white;
+		}
+	}
+	
+	.demo{
+		margin:1em 0;
+	}
+
+// RESPONSIVEX
+	.demo.lop{
+		width:60%;
+		margin-left:20%;
+		margin-right:20%;
+		.row{
+			overflow:hidden;	
+			margin:0 0 1em;
+		}	
+		.element{
+			border:solid 1px #fc0;
+			display: block;
+			width:100%;
+			min-height:7em;
+			background:#fd0;
+			&:after{
+				content:"Neutral";
+				color:white;
+				text-align:center;
+				display:block;
+				padding:.5em 0;
+			}
+			&.portrait{
+				background:red;
+				&:after{
+					content:"Portrait";
+				}
+			}
+			&.landscape{
+				background:blue;
+				&:after{
+					content:"Landscape";
+				}
+			}
+			&.square{
+				background:green;
+				&:after{
+					content:"Square";
+				}
+			}
+		}
+	}
+	
+	.demo.fullH{
+		margin:1em 0 3em;
+		overflow: hidden;
+		.container{
+			background: #eee;
+			border:solid 1px #aaa;
+			height:8em;
+			overflow:hidden;
+		}
+		.element{
+			margin:0 auto;
+			width:8em;
+			background:#bbd800;
+			text-align: center;
+		}
+		/* TABLETS */
+		@media screen and (max-width: 1024px) {
+			.container{
+				height:12em;
+			}
+			.element{
+				width:12em;
+			}
+		}
+	}
+	
+	.demo.fullSize{
+		margin:1em 0 3em;
+		overflow: hidden;
+		.container{
+			background: #eee;
+			border:solid 1px #aaa;
+			height:8em;
+			overflow:hidden;
+		}
+		.element{
+			margin:0 auto;
+			background:#bbd800;
+			text-align: center;
+		}
+		/* TABLETS */
+		@media screen and (max-width: 1024px) {
+			.container{
+				height:12em;
+			}
+		}
+	}
+

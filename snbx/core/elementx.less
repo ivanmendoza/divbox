@@ -1,0 +1,193 @@
+/*
+ELEMENT X
+	by Iván E. Mendoza (@dic7)
+	With styles from LESS Elements 0.6 by Dmitry Fadeyev. http://lesselements.com
+*/
+
+#gradients{
+	.vertical(@color: #F5F5F5, @start: #EEE, @stop: #FFF, @posStart: 0, @posEnd: 1) {
+	  background: @color;
+	  background: -webkit-gradient(linear, left bottom,  left top, color-stop(@posStart, @start), color-stop(@posEnd, @stop));
+	  background: -moz-linear-gradient(center bottom, @start @posStart*100%, @stop @posEnd*100%);
+	  background: -ms-linear-gradient(bottom, @start @posStart*100%,@stop @posEnd*100%); 
+	  filter: ~"progid:DXImageTransform.Microsoft.gradient( startColorstr='@{stop}', endColorstr='@{start}',GradientType=0)";
+	}
+	.horizontal(@color: #F5F5F5, @start: #EEE, @stop: #FFF, @posStart: 0, @posEnd: 1) {
+		background: @color;
+		background-image: linear-gradient(right , @stop @posStart*100%, @start @posEnd*100%);
+		background-image: -o-linear-gradient(right , @stop @posStart*100%, @start @posEnd*100%);
+		background-image: -moz-linear-gradient(right , @stop @posStart*100%, @start @posEnd*100%);
+		background-image: -webkit-linear-gradient(right , @stop @posStart*100%, @start @posEnd*100%);
+		background-image: -ms-linear-gradient(right , @stop @posStart*100% @start @posEnd*100%);
+		background-image: -webkit-gradient(
+			linear,
+			right top,
+			left top,
+			color-stop(@posStart, @stop),
+			color-stop(@posEnd, @start)
+		);
+		background: -ms-linear-gradient(left, @start @posEnd,@stop @posStart); 
+	  filter: ~"progid:DXImageTransform.Microsoft.gradient( startColorstr='@{stop}', endColorstr='@{start}',GradientType=1)";
+	}
+	.v(@color: #F5F5F5, @contrast: 5%){
+		#gradients .vertical(@color, darken(@color, @contrast), lighten(@color, @contrast));
+	}
+	.h(@color: #F5F5F5, @contrast: 5%){
+		#gradients .horizontal(@color, darken(@color, @contrast), lighten(@color, @contrast));
+	}
+	.bw(@color: #F5F5F5, @start: 0, @stop: 255) {
+	  background: @color;
+	  background: -webkit-gradient(linear,
+								   left bottom,
+								   left top,
+								   color-stop(0, rgb(@start,@start,@start)),
+								   color-stop(1, rgb(@stop,@stop,@stop)));
+	  background: -ms-linear-gradient(bottom,
+									  rgb(@start,@start,@start) 0%,
+									  rgb(@start,@start,@start) 100%);
+	  background: -moz-linear-gradient(center bottom,
+									   rgb(@start,@start,@start) 0%,
+									   rgb(@stop,@stop,@stop) 100%);
+	}
+	.faded(@color: #000, @fadedColor: #fff){
+		background-image: -o-linear-gradient(		180deg, @fadedColor 0%, @color 25%, @color 75%, @fadedColor 100%);
+		background-image: -moz-linear-gradient(		180deg, @fadedColor 0%, @color 25%, @color 75%, @fadedColor 100%);
+		background-image: -webkit-linear-gradient(	180deg, @fadedColor 0%, @color 25%, @color 75%, @fadedColor 100%);
+		background-image: -ms-linear-gradient(		180deg, @fadedColor 0%, @color 25%, @color 75%, @fadedColor 100%);
+		background-image: linear-gradient(			90deg, 	@fadedColor 0%, @color 25%, @color 75%, @fadedColor 100%);
+	}
+	.none(@val: none){
+		background:@val;
+		filter:@val;
+	}
+
+}
+
+#borders{
+	.bordered(@top-color: #EEE, @right-color: #EEE, @bottom-color: #EEE, @left-color: #EEE) {
+	  border-top: solid 1px @top-color;
+	  border-left: solid 1px @left-color;
+	  border-right: solid 1px @right-color;
+	  border-bottom: solid 1px @bottom-color;
+	}
+	.rounded(@radius: 2px) {
+	  -webkit-border-radius: @radius;
+	  -moz-border-radius: @radius;
+	  border-radius: @radius;
+	  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
+	}
+	
+	.radius(@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0) {
+	  -webkit-border-top-right-radius: @topright;
+	  -webkit-border-bottom-right-radius: @bottomright;
+	  -webkit-border-bottom-left-radius: @bottomleft;
+	  -webkit-border-top-left-radius: @topleft;
+	  -moz-border-radius-topright: @topright;
+	  -moz-border-radius-bottomright: @bottomright;
+	  -moz-border-radius-bottomleft: @bottomleft;
+	  -moz-border-radius-topleft: @topleft;
+	  border-top-right-radius: @topright;
+	  border-bottom-right-radius: @bottomright;
+	  border-bottom-left-radius: @bottomleft;
+	  border-top-left-radius: @topleft;
+	  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
+	}
+	.none(){
+		border:none;
+		#borders .rounded(0);
+	}
+}
+
+#shadows{
+	.drop(@horizontal: 0, @vertical: 1px, @blur: 2px, @alpha: 0.1, @color: #000) {
+	  -webkit-box-shadow: @horizontal @vertical @blur fadeout(@color, 100-(@alpha*100));
+	  -moz-box-shadow: @horizontal @vertical @blur fadeout(@color, 100-(@alpha*100));
+	  box-shadow: @horizontal @vertical @blur fadeout(@color, 100-(@alpha*100));
+	}
+	.inner(@horizontal:0, @vertical:1px, @blur:2px, @alpha: 0.4, @color: #000) {
+	  -webkit-box-shadow: inset @horizontal @vertical @blur fadeout(@color, 100-(@alpha*100));
+	  -moz-box-shadow: inset @horizontal @vertical @blur fadeout(@color, 100-(@alpha*100));
+	  box-shadow: inset @horizontal @vertical @blur fadeout(@color, 100-(@alpha*100));
+	}
+	.dropandinner(@drop_horizontal: 0, @drop_vertical: 1px, @drop_blur: 2px, @drop_alpha: 0.1, @drop_color: #000, @inner_horizontal: 0, @inner_vertical: 1px, @inner_blur: 2px, @inner_alpha: 0.1, @inner_color: #000) {
+	  -webkit-box-shadow: @drop_horizontal @drop_vertical @drop_blur fadeout(@drop_color, 100-(@drop_alpha*100)), inset @inner_horizontal @inner_vertical @inner_blur fadeout(@inner_color, 100-(@inner_alpha*100));
+
+	  -moz-box-shadow: @drop_horizontal @drop_vertical @drop_blur fadeout(@drop_color, 100-(@drop_alpha*100)), inset @inner_horizontal @inner_vertical @inner_blur fadeout(@inner_color, 100-(@inner_alpha*100));
+
+	  box-shadow: @drop_horizontal @drop_vertical @drop_blur fadeout(@drop_color, 100-(@drop_alpha*100)), inset @inner_horizontal @inner_vertical @inner_blur fadeout(@inner_color, 100-(@inner_alpha*100));
+	}
+
+	.box(@arguments) {
+	  -webkit-box-shadow: @arguments;
+	  -moz-box-shadow: @arguments;
+	  box-shadow: @arguments;
+	}
+	.none(){
+	 	#shadows .box(none);
+	}
+}
+
+#transform{
+	.rotation(@deg:5deg){
+	  -webkit-transform: rotate(@deg);
+	  -moz-transform: rotate(@deg);
+	  transform: rotate(@deg);
+	}
+	.scale(@ratio:1.5){
+	  -webkit-transform:scale(@ratio);
+	  -moz-transform:scale(@ratio);
+	  transform:scale(@ratio);
+	}
+	.translate(@x:0, @y:0) {
+	  -moz-transform: translate(@x, @y);
+	  -webkit-transform: translate(@x, @y);
+	  -o-transform: translate(@x, @y);
+	  -ms-transform: translate(@x, @y);
+	  transform: translate(@x, @y);
+	}
+	.opacity(@opacity: 0.5) {
+	  -moz-opacity: @opacity;
+	  -khtml-opacity: @opacity;
+	  -webkit-opacity: @opacity;
+	  opacity: @opacity;
+	}
+}
+
+#transition{
+	.all(@duration:0.2s, @ease:ease-out) {
+	  -webkit-transition: all @duration @ease;
+	  -moz-transition: all @duration @ease;
+	  transition: all @duration @ease;
+	}
+	.property(@property: width,@delay: 200ms, @ease:ease-out){
+		transition: @property @delay @ease;
+		-moz-transition: @property @delay @ease;
+		-webkit-transition: @property @delay @ease;
+		-o-transition: @property @delay @ease;
+	}
+	.duration(@duration: 0.2s) {
+	  -moz-transition-duration: @duration;
+	  -webkit-transition-duration: @duration;
+	  transition-duration: @duration;
+	}	
+}
+#texts{
+	.cut(){
+		white-space: nowrap;
+		overflow: hidden; 
+		text-overflow: ~"ellipsis";
+	}
+	.nocut(){
+		white-space: inherit;
+		text-overflow: inherit;
+		overflow:inherit;
+	}
+}
+
+#fx{
+	.glass(@fg: #fff, @intensity:.6){ //foreground
+		@shadow: #000;
+		background:none;
+		#shadows .dropandinner(4px, 4px, 1em, @intensity/3, @shadow, 0, 0, 2.5em, @intensity, @fg);
+	}
+}

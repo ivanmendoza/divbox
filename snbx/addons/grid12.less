@@ -1,0 +1,186 @@
+/*
+GRIDX
+	3 breakpoints: desktop, tablet and mobile
+		12 columns for desktop and tablet
+		4 columns for mobile
+
+	by Iván E. Mendoza (@dic7). 
+	Based on Gridpak – gridpak.com
+*/
+
+/* ------ Mobile ------ */
+.container{
+    width:100% - @pageMargin;
+    max-width:480px;
+}
+.fixedContainer{
+    margin:0 auto;
+    width:100% - @pageMargin;
+    max-width:480px;
+}
+.row {
+    margin-left:-1*(@columnsMarginLeft/2);
+    overflow:hidden;
+    clear:both;
+}
+
+@max_columns:   4;
+@padding:       0;
+@gutter_px:     @columnsMarginLeft/2;
+@gutter_pc:     0;
+.one-mobile.column,
+.one-mobile.columns{    .mixin-span(1, @gutter_pc, @gutter_px, @padding, @max_columns);}
+.two-mobile.columns{    .mixin-span(2, @gutter_pc, @gutter_px, @padding, @max_columns);}
+.three-mobile.columns{  .mixin-span(3, @gutter_pc, @gutter_px, @padding, @max_columns);}
+.four-mobile.columns{   .mixin-span(4, @gutter_pc, 0, @padding, @max_columns);}
+.all.columns{       .mixin-span_first; width:100%;}
+
+/* ------ Tablet ------ */
+	@media screen and (min-width: 641px) and (max-width: 1024px) {
+        .container{
+            width:100%-(@pageMargin*2);
+            max-width:1000px;
+        }
+        .fixedContainer{
+            margin:0 auto;
+            width:100%-(@pageMargin*2);
+            max-width:1000px;
+        }
+        .row {
+            margin-left:-1*@columnsMarginLeft;
+        }
+
+        @max_columns:   12;
+        @padding:       0;
+        @gutter_px:     @columnsMarginLeft;
+        @gutter_pc:     0;
+        .one.column,
+        .one.columns{       .mixin-span(1, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .two.columns{       .mixin-span(2, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .three.columns{     .mixin-span(3, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .four.columns{      .mixin-span(4, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .five.columns{      .mixin-span(5, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .six.columns{       .mixin-span(6, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .seven.columns{     .mixin-span(7, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .eight.columns{     .mixin-span(8, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .nine.columns{      .mixin-span(9, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .ten.columns{       .mixin-span(10, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .eleven.columns{    .mixin-span(11, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .twelve.columns{    .mixin-span(12, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .all.columns{       .mixin-span_first; width:100%;}
+
+        .offset-by-one{     .mixin-offset(1, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .offset-by-two{     .mixin-offset(2, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .offset-by-three{   .mixin-offset(3, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .offset-by-four{    .mixin-offset(4, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .offset-by-five{    .mixin-offset(5, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .offset-by-six{     .mixin-offset(6, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .offset-by-seven{   .mixin-offset(7, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .offset-by-eight{   .mixin-offset(8, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .offset-by-nine{    .mixin-offset(9, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .offset-by-ten{     .mixin-offset(10, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .offset-by-eleven{  .mixin-offset(11, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .offset-by-twelve{  .mixin-offset(12, @gutter_pc, @gutter_px, @padding, @max_columns);}
+
+        .pull-one{     .mixin-pull(1, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .pull-two{     .mixin-pull(2, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .pull-three{   .mixin-pull(3, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .pull-four{    .mixin-pull(4, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .pull-five{    .mixin-pull(5, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .pull-six{     .mixin-pull(6, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .pull-seven{   .mixin-pull(7, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .pull-eight{   .mixin-pull(8, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .pull-nine{    .mixin-pull(9, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .pull-ten{     .mixin-pull(10, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .pull-eleven{  .mixin-pull(11, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .pull-twelve{  .mixin-pull(12, @gutter_pc, @gutter_px, @padding, @max_columns);}
+
+        .push-one{     .mixin-push(1, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .push-two{     .mixin-push(2, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .push-three{   .mixin-push(3, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .push-four{    .mixin-push(4, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .push-five{    .mixin-push(5, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .push-six{     .mixin-push(6, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .push-seven{   .mixin-push(7, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .push-eight{   .mixin-push(8, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .push-nine{    .mixin-push(9, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .push-ten{     .mixin-push(10, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .push-eleven{  .mixin-push(11, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .push-twelve{  .mixin-push(12, @gutter_pc, @gutter_px, @padding, @max_columns);}
+	}
+
+
+/* ------ Desktop ------ */
+	@media screen and (min-width: 1025px) {
+        .container{
+            width:100%-(@pageMargin*2);
+            max-width:1260px;
+        }
+        .fixedContainer{
+            margin:0 auto;
+            width:100%-(@pageMargin*2);
+            max-width:1260px;
+        }
+        .row {
+            margin-left:-1*@columnsMarginLeft;
+        }
+
+        @max_columns:   12;
+        @padding:       0;
+        @gutter_px:     @columnsMarginLeft;
+        @gutter_pc:     0;
+
+        .one.column,
+        .one.columns{       .mixin-span(1, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .two.columns{       .mixin-span(2, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .three.columns{     .mixin-span(3, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .four.columns{      .mixin-span(4, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .five.columns{      .mixin-span(5, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .six.columns{       .mixin-span(6, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .seven.columns{     .mixin-span(7, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .eight.columns{     .mixin-span(8, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .nine.columns{      .mixin-span(9, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .ten.columns{       .mixin-span(10, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .eleven.columns{    .mixin-span(11, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .twelve.columns{    .mixin-span(12, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .all.columns{       .mixin-span_first; width:100%;}
+
+        .offset-by-one{     .mixin-offset(1, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .offset-by-two{     .mixin-offset(2, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .offset-by-three{   .mixin-offset(3, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .offset-by-four{    .mixin-offset(4, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .offset-by-five{    .mixin-offset(5, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .offset-by-six{     .mixin-offset(6, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .offset-by-seven{   .mixin-offset(7, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .offset-by-eight{   .mixin-offset(8, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .offset-by-nine{    .mixin-offset(9, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .offset-by-ten{     .mixin-offset(10, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .offset-by-eleven{  .mixin-offset(11, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .offset-by-twelve{  .mixin-offset(12, @gutter_pc, @gutter_px, @padding, @max_columns);}
+
+        .pull-one{     .mixin-pull(1, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .pull-two{     .mixin-pull(2, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .pull-three{   .mixin-pull(3, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .pull-four{    .mixin-pull(4, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .pull-five{    .mixin-pull(5, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .pull-six{     .mixin-pull(6, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .pull-seven{   .mixin-pull(7, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .pull-eight{   .mixin-pull(8, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .pull-nine{    .mixin-pull(9, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .pull-ten{     .mixin-pull(10, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .pull-eleven{  .mixin-pull(11, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .pull-twelve{  .mixin-pull(12, @gutter_pc, @gutter_px, @padding, @max_columns);}
+
+        .push-one{     .mixin-push(1, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .push-two{     .mixin-push(2, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .push-three{   .mixin-push(3, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .push-four{    .mixin-push(4, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .push-five{    .mixin-push(5, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .push-six{     .mixin-push(6, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .push-seven{   .mixin-push(7, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .push-eight{   .mixin-push(8, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .push-nine{    .mixin-push(9, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .push-ten{     .mixin-push(10, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .push-eleven{  .mixin-push(11, @gutter_pc, @gutter_px, @padding, @max_columns);}
+        .push-twelve{  .mixin-push(12, @gutter_pc, @gutter_px, @padding, @max_columns);}
+	}

@@ -1,0 +1,41 @@
+/*
+SNBX DEFAULT CONFIGURATION
+	by Iván E. Mendoza (@dic7)
+*/
+
+// FONTS X
+	#fontsx{
+		// Required mixin for _snbx.less. Just change font family, default size and everything will be fine.
+		
+		.base(@size: 1em){
+			// Default font
+			font:normal @size verdana, helvetica, arial, sans-serif;
+		}
+	
+		.headings(@size: 2em){
+			// Font for headings (h1, h2, h3...)
+			font:normal ~"@{size}/.9" 'gill sans', 'Century Gothic', verdana, sans-serif;
+		}
+	
+		.code(@size: 1em){
+			// Font for code and pre tags (monospace fonts)
+			font:normal ~"@{size}/1.5" 'Lucida Console', 'Consolas', 'Courier New', monospace;
+		}
+		
+		.controls(@size: 1em){
+			// Font for ui controls (use a narrow font, like Tahoma, that fits better into small elements)
+			font:normal ~"@{size}/1" tahoma, sans-serif;
+		}
+	}
+
+// GRID CONFIG
+	@pageMargin:        	0%;
+	@columnsMarginLeft: 	8px; // px
+
+// IMPORTS
+
+	// CORE
+		@import "../snbx/core/_snbx.less";		// SNBX Core (Required... but you can choose which addon want to use below).
+	
+	// ADDONS
+		@import "../snbx/addons/grid12.less"; // Grid X - 12 columns (Optional, responsive grid)

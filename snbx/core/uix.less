@@ -1,0 +1,342 @@
+/*
+UI X
+	BY Iván E. Mendoza (@dic7)
+*/
+#uix{
+// BUTTONS
+	.button(@bg: #fff, @text: #157190, @border:#777, @contrast: 5%){
+		display: inline-block;
+		#gradients .vertical(@bg, darken(@bg, @contrast), lighten(@bg, @contrast));
+		#fontsx .controls;
+		color:@text;
+		font-size:.93em;
+		padding:.5em .6em;
+		overflow:hidden;
+		text-decoration:none;
+		#borders .rounded(.4em);
+		border:solid 1px lighten(@border, 30%);
+		white-space: nowrap;
+		#shadows .drop(0, 1px, 2px, .2);
+		#transition .all(400ms);
+		&:hover, &:focus{
+			#shadows .drop(0, 1px, 2px, .4);
+			color:@bg;
+			border:solid 1px lighten(@text, 30%);
+			#gradients .vertical(@text, darken(@text, @contrast), lighten(@text, @contrast*4));
+		}
+	}
+	
+	// to reset the button style. Useful to change styles at button state (hover, active, etc)
+	.buttonUpdate(@bg: #fff, @text: #157190, @border:#777, @contrast: 5%){
+		#gradients .vertical(@bg, darken(@bg, @contrast), lighten(@bg, @contrast));
+		color:@text;
+		border:solid 1px lighten(@border, 30%);
+	}
+	
+	.brightButton(@bg: #fff, @text: #157190, @border:#777, @contrast: 5%){
+		#gradients .vertical(@bg, darken(@bg, @contrast), lighten(@bg, @contrast));
+		#fontsx .controls;
+		color:@text;
+		font-size:.93em;
+		padding:.5em .6em;
+		overflow:hidden;
+		text-decoration:none;
+		#borders .rounded(.4em);
+		border:solid 1px lighten(@border, 30%);
+		#shadows .drop(0, 1px, 2px, .2);
+		#transition .all(400ms);
+		&:hover, &:focus{
+			#shadows .drop(0, 1px, 2px, .4);
+			color:@text;
+			border:solid 1px lighten(@border, 10%);
+			#gradients .vertical(@bg, @bg, lighten(@bg, @contrast*2));
+		}
+	}
+	
+	.mainButton(@bg: #00b0ea, @text: #fff, @border:#aaa, @contrast: 5%){
+		.button(@bg, @text, @border, @contrast);
+		padding:.9em 1.3em;
+		font-size:.95em;
+	}
+	.secondaryButton(@bg: #157190, @text: #fff, @border:#ccc, @contrast: 5%){
+		.button(@bg, @text, @border, @contrast);
+	}
+	.criticalButton(@bg: #eee, @text: #ba0007, @border:#ccc, @contrast: 5%){
+		.button(@bg, @text, @border, @contrast);
+		&:hover, &:focus{
+			.button(@text, @bg, @border, @contrast);
+		}
+	}
+
+// DROPDOWNS
+	.dropdownButton(@bg: #ccc, @text: #fff){
+		display:block;
+		padding:.2em .3em;
+		padding-left:.8em;
+		line-height:2;
+		#gradients .v(@bg);
+		margin:.2em .2em;
+		text-decoration:none;
+		color: @text;
+		font-weight:400;
+		text-shadow:1px 1px 1px darken(@bg, 15%);
+		#borders .rounded(.2em);
+		#shadows .drop(2px, 2px, 5px, .5);
+		border:solid 1px lighten(@bg, 5%);
+		overflow:hidden;
+		.icon{
+			.rightAlign;
+			position:relative;
+			width:1.5em;
+			height:2em;
+			margin:0 .3em 0 .8em;
+			border-left:solid 1px darken(@bg, 5%);
+			&:after{
+				content:" ";
+				position:absolute;
+				top:50%;
+				left:50%;
+				z-index:100;
+				margin-top:-.3em;
+				margin-left:-.2em;
+				width:.1em;
+				border:solid .4em transparent;
+				border-width:.6em .4em;
+				border-top-color:darken(@bg, 15%);
+			}
+			&:before{
+				content:" ";
+				position:absolute;
+				top:0;
+				bottom:0;
+				left:0;
+				z-index:101;
+				width:1px;
+				background:lighten(@bg,10%);
+			}
+		}
+		&:hover{
+			#gradients .v(lighten(@bg, 5%));
+			text-shadow:1px 1px 1px darken(@bg, 25%);
+			.icon{
+				&:after{
+					border-top-color:lighten(@bg, 75%);
+				}
+			}
+		}
+		&.active{
+			#gradients .v(lighten(@bg, 3%));
+			text-shadow:1px 1px 1px darken(@bg, 25%);
+			.icon{
+				&:after{
+					margin-top:-.5em;
+					border:solid .4em transparent;
+					border-bottom-color:lighten(@bg, 75%);
+				}
+			}
+		}
+	}
+	
+	.dropupButton(@bg: #ccc, @text: #fff){
+		display:block;
+		padding:.2em .3em;
+		padding-left:.8em;
+		line-height:2;
+		#gradients .v(@bg);
+		margin:.2em .2em;
+		text-decoration:none;
+		color: @text;
+		font-weight:400;
+		text-shadow:1px 1px 1px darken(@bg, 15%);
+		#borders .rounded(.2em);
+		#shadows .drop(2px, 2px, 5px, .5);
+		border:solid 1px lighten(@bg, 5%);
+		overflow:hidden;
+		.icon{
+			.rightAlign;
+			position:relative;
+			width:1.5em;
+			height:2em;
+			margin:0 .3em 0 .8em;
+			border-left:solid 1px darken(@bg, 5%);
+			&:after{
+				content:" ";
+				position:absolute;
+				top:50%;
+				left:50%;
+				z-index:100;
+				margin-left:-.2em;
+				width:.1em;
+				border:solid .4em transparent;
+				margin-top:-.5em;
+				border-bottom-color:lighten(@bg, 75%);
+			}
+			&:before{
+				content:" ";
+				position:absolute;
+				top:0;
+				bottom:0;
+				left:0;
+				z-index:101;
+				width:1px;
+				background:lighten(@bg,10%);
+			}
+		}
+		&:hover{
+			#gradients .v(lighten(@bg, 5%));
+			text-shadow:1px 1px 1px darken(@bg, 25%);
+			.icon{
+				&:after{
+					border-bottom-color:lighten(@bg, 75%);
+				}
+			}
+		}
+		&.active{
+			#gradients .v(lighten(@bg, 3%));
+			text-shadow:1px 1px 1px darken(@bg, 25%);
+			.icon{
+				&:after{
+					border:solid .4em transparent;
+					margin-top:0;
+					border-top-color:darken(@bg, 5%);
+				}
+			}
+		}
+	}
+	
+// SEARCH FIELDS
+	.integratedSearch(@bgBtn: #ff0000, @textBtn:#fff, @contrast: 5%){
+		overflow:hidden;
+		padding:.3em;
+		background:@light;
+		border:solid 1px darken(@light, 10%);
+		font-size:1em;
+		#borders .rounded(.2em);
+		.input-text, .button{
+			.leftAlign;
+			border:none;
+			padding:.4em 0;
+		}
+		.input-text{
+			width:66%;
+			padding:0;
+			-webkit-appearance:none;
+			outline: none;
+			margin:.2em 0 0;
+			background:none;
+			&:focus{
+				border:none;
+			}
+		}
+		.button.search{
+			font-size:.75em;
+			text-transform:uppercase;
+			width:30%;
+			color:@textBtn;
+			margin-left:4%;
+			#borders .rounded(.4em);
+			#gradients .vertical(@bgBtn, darken(@bgBtn, @contrast), lighten(@bgBtn, @contrast));
+			&:hover, &:focus{
+				#gradients .vertical(@bgBtn, darken(@bgBtn, @contrast), lighten(@bgBtn, @contrast*4));
+			}
+			&:active{
+				#gradients .vertical(darken(@bgBtn, @contrast), lighten(@bgBtn, @contrast*4), darken(@bgBtn, @contrast));
+			}
+		}
+	}
+	
+// NAVBARS
+	.navbarCore(){
+		list-style:none;
+		#borders .rounded(.5em);
+		padding:0;
+		margin:0;
+		#shadows .drop(.1em, .1em, .2em, .3);
+		overflow: hidden;
+		li{
+			margin:0;
+			padding:0;
+			overflow:hidden;
+			.hotspot{
+				color:#fff;
+				display:block;
+				padding:1em .8em;
+				text-decoration:none;
+				font-weight:normal;
+				#fontsx .headings(.90em);
+				text-transform:uppercase;
+				font-weight:normal;
+				line-height:26px;
+			}
+			.areaForm{
+				margin:.4em 0;
+				padding:0;
+				.field{
+					margin:.7em .6em 0;
+					#fontsx .headings(.90em);
+					text-transform:uppercase;
+					font-weight:normalñ;
+					line-height:26px;
+					&:first-child{
+						margin-top:0;
+					}
+					label{
+						.leftAlign;
+						color:#fff;
+					}
+					.input-text{
+						text-align:left;
+						background:none;
+					}
+				}
+			}
+		}
+		li.leftAlign{
+			.leftAlign;
+		}
+		li.rightAlign{
+			.rightAlign;
+		}
+		li:last-child{
+			border-bottom:none;
+		}
+	}
+	.navbar(@bg: #555, @text:#fff, @contrast: 5%, @btnColor: #8A9A27){
+		#ui .navbarCore;
+		color:@text;
+		#gradients .vertical(@bg, darken(@bg, @contrast), lighten(@bg, @contrast));
+		border:solid 1px lighten(@bg, @contrast*2);
+		li{
+			border-bottom:solid 1px lighten(@bg, @contrast*2);
+			.hotspot{
+				color:fadeout(@text, 10%);
+				&:hover, &:focus{
+					color:@text;
+					#gradients .vertical(@bg, darken(@bg, @contrast), lighten(@bg, @contrast*4));
+				}
+			}
+			.areaForm{
+				.field{
+					#ui .integratedSearch(@btnColor, @light);
+				}
+			}
+		}
+	}
+	.navbarCompact(@bg: #555, @text:#fff, @contrast: 5%, @btnColor: #8A9A27){
+		#ui .navbar(@bg, @text, @contrast);
+		#borders .rounded(.5em);
+		li{
+			.leftAlign;
+			border:none;
+				overflow: hidden;
+			border-right:solid 1px lighten(@bg, @contrast*2);
+			.field{
+				#ui .integratedSearch(@btnColor, @light);
+				margin:.6em .6em 0;
+			}
+		}
+		li:last-child{
+			border:none;
+		}
+	}
+}

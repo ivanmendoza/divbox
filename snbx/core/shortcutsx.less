@@ -1,0 +1,44 @@
+/*
+SNBX SHORTCUTS
+	by Iván E. Mendoza (@dic7)
+*/
+.leftAlign{
+	float:left;
+	clear:none;
+}
+.rightAlign{
+	float:right;
+	clear:none;
+}
+.centerAlign{
+	margin-left:auto;
+	margin-right:auto;
+}
+.toLeft{	text-align:left;}
+.toCenter{	text-align:center;}
+.toRight{	text-align:right;}
+
+.imageBox(@width: 100px, @height: 10px, @posx: 0, @posy: 0){
+	color:transparent;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-repeat:no-repeat;
+	background-position:@posx @posy;
+	width:@width;
+	height:@height;
+}
+.placeholderx(@color:#ccc){
+	::-webkit-input-placeholder { /* WebKit browsers */
+	    color:    @color;
+	}
+	:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	    color:    @color;
+	}
+	::-moz-placeholder { /* Mozilla Firefox 19+ */
+	    color:    @color;
+	}
+	:-ms-input-placeholder { /* Internet Explorer 10+ */
+	    color:    @color;
+	}
+}
