@@ -15,16 +15,7 @@
 			$("#trigger1").on("click", function(e){
 				e.preventDefault();
 			
-				$("#content1").divBox(
-					".the_divbox", 
-					".close-divbox", 
-					[
-						{
-							"trigger": "#btn-actualizar", 
-							"callback": function(){alert("actualizo datos");}
-						}
-					]
-				);
+				$("#content1").divBox({content: ".the_divbox"});
 				
 				// just to change button label
 				if($(this).text() == "Show divbox 1"){
@@ -33,10 +24,14 @@
 					$(this).text("Show divbox 1");
 				}
 			});
+			$("#btn-goodbye").on("click", function(){
+				$("#content1").divBox.deleteDivbox();
+			});
+			
 			$("#trigger2").on("click", function(e){
 				e.preventDefault();
 			
-				$("#content2").divBox(".the_divbox");
+				$("#content2").divBox({content: ".the_divbox"});
 				
 				// just to change button label
 				if($(this).text() == "Show divbox 2"){
@@ -75,8 +70,8 @@
 					<img src="http://placehold.it/160x120" alt="image" style="width:45%;"  />
 				</p>
 				<p>
-					<a href="#" id="btn-cancelar" class="close-divbox">Cerrar</a>
-					<a href="#" id="btn-actualizar">Actualizar</a>
+					<a href="#" id="btn-close" class="close-divbox">Close</a>
+					<a href="#" id="btn-goodbye">Say goodbye and close</a>
 				</p>
 			</div>	
 		</div>
