@@ -8,6 +8,8 @@
 			var closeButton 	= opts.closeButton;
 			var $content 		= $(opts.content, target);
 			$.fn.divBox.content = $content;
+			$.fn.divBox.customClass = opts.customClass;
+			$.fn.divBox.callback = opts.callback;
 			
 			createDivbox = function(target, divboxColor){
 				target = target || 'body';
@@ -18,9 +20,13 @@
 				if($divboxContent.length>0){
 					return $divboxContent;
 				}
+				var styleClasses = "divboxContainer";
+				if($.fn.divBox.customClass){
+					styleClasses += " " + $.fn.divBox.customClass;
+				}
 				
 				$target.css('position', 'relative');
-				var $divboxContainer = 	$("<div>").attr("class", "divboxContainer").css({'position':'absolute', 'display':'none', 'top':'0', 'bottom':'0', 'left':'0', 'right':'0', 'z-index':'1001'});
+				var $divboxContainer = 	$("<div>").addClass(styleClasses).css({'position':'absolute', 'display':'none', 'top':'0', 'bottom':'0', 'left':'0', 'right':'0', 'z-index':'1001'});
 				var $divbox = 			$("<div>").attr("class", "divbox").css({'position':'absolute', 'background':divboxColor, 'top':'0', 'bottom':'0', 'left':'0', 'right':'0', 'z-index':'1002'}).fadeTo(0, .9);
 					$divboxContent = 	$("<div>").attr("class", "divboxContent").css({'position':'absolute', 'top':'30px', 'bottom':'30px', 'left':'30px', 'right':'30px', 'z-index':'1003'});
 				
@@ -31,6 +37,12 @@
 				$divboxContainer.append($divbox, $divboxContent);
 				$target.append($divboxContainer);
 				$divboxContainer.fadeIn(500);
+				
+				setTimeout(function(callback, divContainer){
+					if (typeof callback == 'function') {
+				        callback.call(); 
+				    }
+				}, 50, $.fn.divBox.callback, $divboxContainer);
 				
 				$(closeButton, target).each(function(){
 					$(this).on("click", function(){
@@ -59,7 +71,8 @@
 	$.fn.divBox.defaults = {
 		content: 		'.content-divbox',
 		closeButton: 	'.close-divbox',
-		bgColor:		'#fff'
+		bgColor:		'#fff',
+		callback:		null
 	};
 	
 	$.fn.divBox.deleteDivbox = function (){
