@@ -10,6 +10,8 @@
 			$.fn.divBox.content = $content;
 			$.fn.divBox.customClass = opts.customClass;
 			$.fn.divBox.callback = opts.callback;
+			$.fn.divBox.onload = opts.onload;
+			$.fn.divBox.onclose = opts.onclose;
 			
 			createDivbox = function(target, divboxColor){
 				target = target || 'body';
@@ -27,8 +29,14 @@
 				
 				$target.css('position', 'relative');
 				var $divboxContainer = 	$("<div>").addClass(styleClasses).css({'position':'absolute', 'display':'none', 'top':'0', 'bottom':'0', 'left':'0', 'right':'0', 'z-index':'1001'});
-				var $divbox = 			$("<div>").attr("class", "divbox").css({'position':'absolute', 'background':divboxColor, 'top':'0', 'bottom':'0', 'left':'0', 'right':'0', 'z-index':'1002'}).fadeTo(0, .9);
+				var $divbox = 			$("<div>").attr("class", "divbox").css({'position':'absolute', 'background':divboxColor, 'top':'0', 'bottom':'0', 'left':'0', 'right':'0', 'z-index':'1002'}).fadeTo(0, .8);
 					$divboxContent = 	$("<div>").attr("class", "divboxContent").css({'position':'absolute', 'top':'30px', 'bottom':'30px', 'left':'30px', 'right':'30px', 'z-index':'1003'});
+				
+				if($.fn.divBox.closeOnClickOut){
+					$divbox.on("click", function(){
+						$.fn.divBox.deleteDivbox();
+					});
+				}
 				
 				if($content){
 					$content.show();
@@ -38,17 +46,25 @@
 				$target.append($divboxContainer);
 				$divboxContainer.fadeIn(500);
 				
+				if (typeof $.fn.divBox.onload == 'function') {
+			        $.fn.divBox.onload.call($divboxContainer); 
+			    }
+				
 				setTimeout(function(callback, divContainer){
 					if (typeof callback == 'function') {
-				        callback.call(); 
+				        callback.call(divContainer); 
 				    }
 				}, 50, $.fn.divBox.callback, $divboxContainer);
 				
 				$(closeButton, target).each(function(){
-					$(this).on("click", function(){
-						$dc = $(this).parents("div.divboxContainer");
-						$.fn.divBox.deleteDivbox($dc.parent(), $content);
-					});
+					if($(this).data("isCerrar")!= true){
+						$(this).data("isCerrar", true);
+						$(this).on("click", function(e){
+							e.preventDefault();
+							$dc = $(this).parents("div.divboxContainer");
+							$.fn.divBox.deleteDivbox($dc.parent(), $content);
+						});
+					}
 				});
 				
 				return $divboxContent;
@@ -72,6 +88,9 @@
 		content: 		'.content-divbox',
 		closeButton: 	'.close-divbox',
 		bgColor:		'#fff',
+		closeOnClickOut:true,
+		onload:			null,
+		onclose:		null,
 		callback:		null
 	};
 	
@@ -85,6 +104,9 @@
 				$target.append($content);
 			}
 			$(this).remove();
+			if (typeof $.fn.divBox.onclose == 'function') {
+		        $.fn.divBox.onclose.call($target); 
+		    }
 		})
 	};
 })(jQuery);
